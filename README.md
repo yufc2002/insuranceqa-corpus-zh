@@ -17,7 +17,11 @@
 
 欢迎任何进一步增加此数据集的想法。
 
-## 安装
+## 快速开始
+
+### 在Python环境中，使用pip安装
+
+兼容py2, py3
 
 ```
 pip install --upgrade insuranceqa_data
@@ -46,13 +50,13 @@ pip install --upgrade insuranceqa_data
 }
 ```
 
-* 训练：```corpus/train.json```
+* 训练：```corpus/pool/train.json.gz```
 
-* 验证：```corpus/valid.json```
+* 验证：```corpus/pool/valid.json.gz```
 
-* 测试：```corpus/test.json```
+* 测试：```corpus/pool/test.json.gz```
 
-* 答案：```corpus/answers.json```
+* 答案：```corpus/pool/answers.json```
 一共有 27,413 个回答，数据格式为 ```json```:
 ```
 {
@@ -72,7 +76,7 @@ pip install --upgrade insuranceqa_data
 格式 INDEX ++$++ 保险种类 ++$++ 中文 ++$++ 英文
 ```
 
-```corpus/train.txt```, ```corpus/valid.txt```, ```corpus/test.txt```.
+```corpus/pool/train.txt.gz```, ```corpus/pool/valid.txt.gz```, ```corpus/pool/test.txt.gz```.
 
 #### 答案
 
@@ -80,16 +84,12 @@ pip install --upgrade insuranceqa_data
 格式 INDEX ++$++ 中文 ++$++ 英文
 ```
 
-```corpus/answers.txt```
+```corpus/pool/answers.txt.gz```
 
-## 快速开始
-
-### 在Python环境中，使用pip安装
-
-兼容py2, py3
+语料库使用gzip进行压缩以减小体积，可以使用zmore, zless, zcat, zgrep等命令访问数据。
 
 ```
-pip install --upgrade insuranceqa_data
+zmore pool/test.txt.gz
 ```
 
 ### 加载数据
