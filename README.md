@@ -131,7 +131,7 @@ vocab_data['tf']
 vocab_data['total']
 ```
 
-```vocab_data```包含```dict_word_to_id```(dict, 从word到id), ```dict_id_to_word```(dict, 从id到word),```tf```(dict, 词频统计)和```total```(单词总数)。 其中，未登录词的标识为```UNKNOWN```，未登录词的id为0。
+```vocab_data```包含```word2id```(dict, 从word到id), ```id2word```(dict, 从id到word),```tf```(dict, 词频统计)和```total```(单词总数)。 其中，未登录词的标识为```UNKNOWN```，未登录词的id为0。
 
 ```train_data```, ```test_data``` 和 ```valid_data``` 的数据格式一样。```qid``` 是问题Id，```question``` 是问题，```utterance``` 是回复，```label``` 如果是 ```[1,0]``` 代表回复是正确答案，```[0,1]``` 代表回复不是正确答案，所以 ```utterance``` 包含了正例和负例的数据。每个问题含有10个负例和1个正例。
 
