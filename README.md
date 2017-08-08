@@ -125,8 +125,8 @@ for x in test_data:
      (x['qid'], x['question'], x['utterance'], x['label']))
 
 vocab_data = insuranceqa.load_pairs_vocab()
-vocab_data['dict_word_to_id']['UNKNOWN']
-vocab_data['dict_id_to_word'][0]
+vocab_data['word2id']['UNKNOWN']
+vocab_data['id2word'][0]
 vocab_data['tf']
 vocab_data['total']
 ```
