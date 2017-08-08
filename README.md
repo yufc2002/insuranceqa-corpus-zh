@@ -139,6 +139,17 @@ vocab_data['total']
 ```test_data```含有问题2,000条，数据 ```22000```条，正例：负例 = 1:10
 ```valid_data```含有问题2,000条，数据 ```22000```条，正例：负例 = 1:10
 
+句子长度:
+
+```
+max len of valid question : 31, average: 5(max)
+max len of valid utterance: 878(max), average: 165(max)
+max len of test question : 33, average: 5
+max len of test utterance: 878, average: 161
+max len of train question : 42(max), average: 5
+max len of train utterance: 878, average: 162
+```
+
 ## 声明
 
 声明1 : [insuranceqa-corpus-zh](https://github.com/Samurais/insuranceqa-corpus-zh)
