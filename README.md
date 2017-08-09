@@ -148,6 +148,7 @@ max len of test question : 33, average: 5
 max len of test utterance: 878, average: 161
 max len of train question : 42(max), average: 5
 max len of train utterance: 878, average: 162
+vocab size: 24997
 ```
 
 ## 声明
