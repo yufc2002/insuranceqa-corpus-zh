@@ -151,6 +151,14 @@ max len of train utterance: 878, average: 162
 vocab size: 24997
 ```
 
+## 可将本语料库和以下开源码配合使用
+
+[DeepQA2](https://github.com/Samurais/DeepQA2)
+
+[InsuranceQA TensorFlow](https://github.com/l11x0m7/InsuranceQA)
+
+[Chatbot Retrieval](https://github.com/dennybritz/chatbot-retrieval)
+
 ## 声明
 
 声明1 : [insuranceqa-corpus-zh](https://github.com/Samurais/insuranceqa-corpus-zh)
