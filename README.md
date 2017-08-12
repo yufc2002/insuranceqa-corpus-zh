@@ -4,7 +4,7 @@
 
 ## 声明
 
-声明1 : [insuranceqa-corpus-zh](https://github.com/Samurais/insuranceqa-corpus-zh)
+声明1 : [insuranceqa-corpus-zh](https://github.com/Samurais/insuranceqa-corpus-zh/wiki)
 
 本数据集使用翻译 [insuranceQA](https://github.com/shuzi/insuranceQA)而生成，代码发布证书 GPL 3.0。数据仅限于研究用途，如果在发布的任何媒体、期刊、杂志或博客等内容时，必须注明引用和地址。
 
