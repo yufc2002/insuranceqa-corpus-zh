@@ -1,6 +1,6 @@
 # 保险行业语料库
 
-<a href="https://github.com/Samurais/insuranceqa-corpus-zh/wiki" _target="blank">详细文档</a>
+<a href="https://github.com/Samurais/insuranceqa-corpus-zh/wiki" target="_blank">详细文档</a>
 
 ## 声明
 
