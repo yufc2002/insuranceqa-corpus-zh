@@ -1,5 +1,0 @@
-1 cloud sky plane
-2 cloud airplane
-3 bird sky
-4 bird sunshine
-5 sky cloud
