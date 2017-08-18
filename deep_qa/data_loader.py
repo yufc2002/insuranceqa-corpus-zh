@@ -28,6 +28,7 @@ import insuranceqa_data as insuranceqa
 class Data_Loader(object):
     def __init__(self):
         print("Data loading...")
+        self.word_dict_path = '../corpus/pairs/word_dict'
 
     def load(self):
         print("load train data, valid data, test_data and vocab data...")
@@ -73,6 +74,14 @@ class Data_Loader(object):
             print('index %s value: %s ++$++ %s ++$++ %s'
                   %(x['qid'], x['question'], x['utterance'], x['label']))
             break
+
+    def get_word_dict(self):
+        word2id = self.vocab_data['word2id']
+        word_dict = word2id.keys()
+        print("len of word_dict is", len(word_dict))
+        with open(self.word_dict_path, 'a') as fw:
+            for word in word_dict:
+                fw.write(word+'\n')
 
     def pad(self):
         print("padding...")
@@ -120,6 +129,8 @@ class Data_Loader(object):
 def test():
     data_loader = Data_Loader()
     data_loader.load()
+    data_loader.stat()
+    data_loader.get_word_dict()
     data_loader.show()
     data_loader.pad()
 
