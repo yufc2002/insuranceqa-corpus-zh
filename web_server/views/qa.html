@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Question Answer System</title>
+    <link rel="shortcut icon" href="http://ir.whu.edu.cn/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="static/qa/reset.css">
+    <link rel="stylesheet" type="text/css" href="static/qa/login.css">
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="login" src="static/qa/login.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="static/qa/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/js/util/validate.js" src="static/qa/validate.js"></script>
+</head>
+<body>
+<section class="ir-login">
+    <section class="ir-login-box">
+        <section class="ir-login-box-inner">
+            <section class="ir-login-box-aside">
+                <img src="static/qa/logo.png" alt="irlab">
+                <h1 class="ir-login-aside-title">问答系统</h1>
+                <h2 class="ir-login-aside-subtitle">Question Answering System</h2>
+            </section>
+            <section class="ir-login-box-main">
+                <h1 class="ir-login-title">提问<span>Question</span></h1>
+                <form class="ir-login-form" action="/TKQA" method="post">
+                    <div class="ir-input-wrapper">
+                        <input name="query" placeholder="请输入问句" type="text">
+                        <i class="icon icon-username"></i>
+                    </div>
+                    <div class="ir-input-wrapper">
+                        <input name="top_n" placeholder="请输入检索参照数" type="password">
+                        <i class="icon icon-password"></i>
+                    </div>
+                    <div class="ir-btn-wrapper">
+                        <button class="ir-btn" type="submit" id="loginBtn">提交</button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </section>
+</section>
+<script src="static/qa/require.js" data-main="/js/login.js"></script>
+
+</body></html>

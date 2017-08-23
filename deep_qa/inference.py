@@ -26,6 +26,7 @@ class Inference(object):
     def __init__(self, model_path = './models/basic_baselineThu_Aug_17_01:40:41_2017.h5'):
         print("Inference...")
         self.model_path = model_path
+        self.update_model_path = './models/basic_baselineMon_Aug_21_20:25:56_2017update.h5'
         self.max_len_train_question = 42
         self.max_len_train_utterance = 878
 
@@ -68,6 +69,7 @@ class Inference(object):
         question = ''.join(best_pair[0].strip().split())
         utterance = ''.join(best_pair[1].strip().split())
         print('最佳答案参照：', question, utterance)
+        return question, utterance
 
     def pair_list_convert(self, pair_list, word2id):
         question_list = []
@@ -93,9 +95,7 @@ class Inference(object):
         utterance_list = pad_sequences(utterance_list, maxlen=self.max_len_train_utterance)
         return question_list, utterance_list
 
-def main():
-    # pair_list = [('介绍 下 微保 ？', '微保 是 腾讯 旗下 的 互联网 保险 平台'),
-    #              ('请 介绍 下 微保 ？', '微保 是 腾讯 旗下 的 互联网 保险 平台 。')]
+def Prepare():
     data_loader = Data_Loader()
     data_loader.load()
     data_loader.stat()
@@ -105,12 +105,28 @@ def main():
     model.info(data_loader)
     _, network_model = model.basic_baseline()
 
-
     config = Config()
     search = Search()
 
     inference = Inference()
-    network_model.load_weights(inference.model_path)
+    # network_model.load_weights(inference.model_path)
+    network_model.load_weights(inference.update_model_path)
+    return inference, network_model, config, search, word2id
+
+def Process(inference, network_model, config, search, word2id, query, top_n):
+
+    query = ' '.join(jieba.cut(query.strip(), cut_all=False))
+    result = search.search_by_question(query, int(top_n), config)
+
+    question_list, utterance_list = inference.get_candidate(query, result, word2id)
+    best_index = inference.inference(network_model, question_list, utterance_list)
+
+    question, utterance = inference.get_best_utterance(best_index, result)
+    return question, utterance
+
+def main():
+
+    inference, network_model, config, search, word2id = Prepare()
 
     while True:
 
@@ -121,13 +137,18 @@ def main():
 
         top_n = raw_input("top n >> ")
 
-        query = ' '.join(jieba.cut(query.strip(), cut_all=False))
-        result = search.search_by_question(query, int(top_n), config)
+        if not top_n:
+            top_n = 3
 
-        question_list, utterance_list = inference.get_candidate(query, result, word2id)
-        best_index = inference.inference(network_model, question_list, utterance_list)
+        # query = ' '.join(jieba.cut(query.strip(), cut_all=False))
+        # result = search.search_by_question(query, int(top_n), config)
+        #
+        # question_list, utterance_list = inference.get_candidate(query, result, word2id)
+        # best_index = inference.inference(network_model, question_list, utterance_list)
+        #
+        # inference.get_best_utterance(best_index, result)
 
-        inference.get_best_utterance(best_index, result)
+        Process(inference, network_model, config, search, word2id, query, top_n)
 
 if __name__ == "__main__":
     main()

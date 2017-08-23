@@ -22,6 +22,9 @@ if sys.version_info[0] < 3:
     reload(sys)
     sys.setdefaultencoding("utf-8")
 
+import json
+import jieba
+import codecs
 from keras.preprocessing.sequence import pad_sequences
 import insuranceqa_data as insuranceqa
 
@@ -29,12 +32,17 @@ class Data_Loader(object):
     def __init__(self):
         print("Data loading...")
         self.word_dict_path = '../corpus/pairs/word_dict'
+        self.tk_data_path = '../corpus/pairs/tk_pairs.json'
 
     def load(self):
         print("load train data, valid data, test_data and vocab data...")
         self._train_data = insuranceqa.load_pairs_train()
         self._test_data = insuranceqa.load_pairs_test()
         self._valid_data = insuranceqa.load_pairs_valid()
+        self.vocab_data = insuranceqa.load_pairs_vocab()
+
+    def load_vocb(self):
+        print("load vocab data...")
         self.vocab_data = insuranceqa.load_pairs_vocab()
 
     def stat(self):
@@ -125,6 +133,41 @@ class Data_Loader(object):
                (pad_sequences(test_question, maxlen=self.max_len_train_question),
                 pad_sequences(test_utterance, maxlen=self.max_len_train_utterance),
                 valid_label)
+
+    def tk_data_loader(self):
+        print("load tk data...")
+        word2id = self.vocab_data['word2id']
+        jieba.load_userdict(self.word_dict_path)
+        question_list = []
+        utterance_list = []
+        label_list = []
+        with codecs.open(self.tk_data_path, encoding='utf8') as fp:
+            for line in fp.readlines():
+                line = json.loads(line.strip())
+                utterance = line['utterance']
+                utterance = ' '.join(jieba.cut(utterance.strip(), cut_all=False)).split()
+                utterance_id = []
+                for word in utterance:
+                    try:
+                        utterance_id.append(word2id[word])
+                    except:
+                        pass
+
+                question = line['question']
+                question = ' '.join(jieba.cut(question.strip(), cut_all=False)).split()
+                question_id = []
+                for word in question:
+                    try:
+                        question_id.append(word2id[word])
+                    except:
+                        pass
+
+                question_list.append(question_id)
+                utterance_list.append(utterance_id)
+                label_list.append([1, 0])
+        return (pad_sequences(question_list, maxlen=self.max_len_train_question),
+                pad_sequences(utterance_list, maxlen=self.max_len_train_utterance),
+                label_list)
 
 def test():
     data_loader = Data_Loader()
