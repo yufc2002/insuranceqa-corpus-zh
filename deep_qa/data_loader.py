@@ -15,6 +15,7 @@ import os
 import sys
 
 curdir = os.path.dirname(os.path.abspath(__file__))
+prvdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(curdir))
 print(curdir)
 
@@ -31,8 +32,8 @@ import insuranceqa_data as insuranceqa
 class Data_Loader(object):
     def __init__(self):
         print("Data loading...")
-        self.word_dict_path = '../corpus/pairs/word_dict'
-        self.tk_data_path = '../corpus/pairs/tk_pairs.json'
+        self.word_dict_path = prvdir+'/corpus/pairs/word_dict'
+        self.tk_data_path = prvdir+'/corpus/pairs/tk_pairs.json'
 
     def load(self):
         print("load train data, valid data, test_data and vocab data...")

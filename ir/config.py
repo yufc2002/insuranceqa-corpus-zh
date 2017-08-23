@@ -11,6 +11,8 @@ __date__ = "2017-08-08:18:32:05"
 import os
 import sys
 curdir = os.path.dirname(os.path.abspath(__file__))
+prvdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 sys.path.insert(0, os.path.dirname(curdir))
 
 from elasticsearch import Elasticsearch
@@ -21,7 +23,7 @@ class Config(object):
         self.es = Elasticsearch(['localhost'], port=9200)
         self.index_name = "tk_qa_index"
         self.doc_type = "text"
-        self.doc_path = '/home/irlab0/Research/TK_QA/insuranceqa-corpus-zh/corpus/pairs/tk_pairs.json'
+        self.doc_path = prvdir+'/corpus/pairs/tk_pairs.json'
 
 def main():
     Config()

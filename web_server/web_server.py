@@ -23,7 +23,7 @@ Inference, Network_model, Config, Search, Word2id = Prepare()
 class TKQAHandler(tornado.web.RequestHandler):
 
     def get(self):
-        self.render('./views/index.html')
+        self.render(curdir+'/views/index.html')
         # self.render('./views/qa.html')
 
     def post(self):
@@ -35,7 +35,7 @@ class TKQAHandler(tornado.web.RequestHandler):
         try:
             question, utterance = Process(Inference, Network_model, Config, Search, Word2id, query, top_n)
             json_data = {'question': question, 'utterance': utterance}
-            self.render('./views/answer.html',
+            self.render(curdir+'/views/answer.html',
                         query=query,
                         question=json_data['question'],
                         utterance=json_data['utterance'])

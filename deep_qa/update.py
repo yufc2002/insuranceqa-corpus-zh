@@ -13,6 +13,7 @@ from model import Network
 
 import time
 import os
+curdir = os.path.dirname(os.path.abspath(__file__))
 
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
@@ -21,7 +22,7 @@ def update(data_loader, network):
     tk_data = data_loader.tk_data_loader()
     model_name, model = network.basic_baseline()
 
-    previous_model_path = './models/basic_baselineThu_Aug_17_01:40:41_2017.h5'
+    previous_model_path = curdir+'/models/basic_baselineThu_Aug_17_01:40:41_2017.h5'
     if os.path.exists(previous_model_path):
         model.load_weights(previous_model_path)
 

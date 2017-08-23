@@ -10,6 +10,8 @@ __date__ = "2017-08-08:18:32:05"
 
 import sys, os
 curdir = os.path.dirname(os.path.abspath(__file__))
+prvdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 sys.path.insert(0, os.path.dirname(curdir))
 
 import gensim
@@ -17,9 +19,9 @@ import gensim
 class Utils(object):
     def __init__(self):
         print("let's use utils...")
-        self.wordvecs_txt = '../corpus/embedding/wordvecs.txt'
-        self.wordvecs_vcb = '../corpus/embedding/wordvecs.vcb'
-        self.word_embedding = '../corpus/embedding/word_embedding.bin'
+        self.wordvecs_txt = prvdir+'/corpus/embedding/wordvecs.txt'
+        self.wordvecs_vcb = prvdir+'/corpus/embedding/wordvecs.vcb'
+        self.word_embedding = prvdir+'/corpus/embedding/word_embedding.bin'
 
     def convert2bin(self):
         print("convert old embedding format to normal format...")

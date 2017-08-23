@@ -23,10 +23,10 @@ from ir.search import Search
 from ir.config import Config
 
 class Inference(object):
-    def __init__(self, model_path = './models/basic_baselineThu_Aug_17_01:40:41_2017.h5'):
+    def __init__(self, model_path = curdir+'/models/basic_baselineThu_Aug_17_01:40:41_2017.h5'):
         print("Inference...")
         self.model_path = model_path
-        self.update_model_path = './models/basic_baselineMon_Aug_21_20:25:56_2017update.h5'
+        self.update_model_path = curdir+'/models/basic_baselineMon_Aug_21_20:25:56_2017update.h5'
         self.max_len_train_question = 42
         self.max_len_train_utterance = 878
 

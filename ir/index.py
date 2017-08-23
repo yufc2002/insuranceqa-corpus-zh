@@ -17,6 +17,7 @@ from time import gmtime, strftime
 import os
 import sys
 curdir = os.path.dirname(os.path.abspath(__file__))
+prvdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(curdir))
 
 from config import Config
@@ -25,7 +26,7 @@ from config import Config
 class Index(object):
     def __init__(self):
         print("create index...")
-        self.word_dict_path = '../corpus/pairs/word_dict'
+        self.word_dict_path = prvdir+'/corpus/pairs/word_dict'
 
     def jieba_load_word_dict(self):
         print("load word dict...")
